@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm() {
+
+  var flag = true;
+  var x = document.querySelector("#name").value;
+  var d = document.querySelector("#email").value;
+  var y = document.querySelector("#sayisal").value;
+  var re = /(\w+)\@(\w+)\.[a-zA-Z]{3}\b/;
+  var z = document.querySelector("#basamakli").value;
+  var a = document.querySelector("#alfa").value;
+  var alphaExp = /^[a-zA-Z]+$/;
+  var b = document.querySelector("#max30").value;
+  var c = document.querySelector("#uckelime").value;
+  var e = document.querySelector("#password").value;
+  
+  if (x == "") {
+     document.getElementById('error1').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız,lütfen formata uyun </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error1').innerHTML = '';
+  }
+  
+  if (d == "" || !re.test(d)) {
+     document.getElementById('error2').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error2').innerHTML = '';
+  }
+  
+  if (isNaN(y) || y == "") {
+     document.getElementById('error3').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error3').innerHTML = '';
+  }
+  
+  if (isNaN(z) || z == "" || z.length < 12) {
+     document.getElementById('error4').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error4').innerHTML = '';
+  }
+  
+  if ( a == "" || !alphaExp.test(a)) {
+     document.getElementById('error5').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error5').innerHTML = '';
+  }
+
+  if ( b == "" || !alphaExp.test(b) || b.length>30) {
+     document.getElementById('error6').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error6').innerHTML = '';
+  }
+  
+  if ( c == "" || c.split(" ").length!= 3) {
+     document.getElementById('error7').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error7').innerHTML = '';
+  }
+
+  if ( e == "" || e.toUpperCase() == e || e.toLowerCase()== e || !(/\d/.test(e)) || !(/[!;':",.?]/.test(e)) || e.length<8) {
+     document.getElementById('error8').innerHTML="<span style='color:#FF0000'> hatalı giriş yaptınız </span>";
+     flag =false;
+  }
+  else{
+    document.getElementById('error8').innerHTML = '';
+  }
+
+  if(flag == false){
+     return false;
+  }
+  }
+
+</script>
+</head>
+<body>
+
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Aşağıdaki hiçbir input boş olmamalı: <br>
+
+
+  <table style="width:40%">
+  <tr>
+    <td>Boş olmamalı: </td>
+        <td><input type="text" id="name"></td>
+        <td id="error1" style="width:20%"></td>
+
+  </tr>
+  <tr>
+    <td>E-mail (Kurallara uygun email): </td>
+    <td><input type="text" id="email"></td>
+    <td id="error2" style="width:20%"></td>
+
+  </tr>
+  <tr>
+    <td>Sadece sayısal: </td>
+    <td><input type="text" id="sayisal"></td>
+    <td id="error3" style="width:20%"></td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal olan ve 12 basamak uzunluğundaki sayi: </td>
+    <td><input type="text" id="basamakli"></td>
+    <td id="error4" style="width:20%"></td>
+  </tr>
+  <tr>
+    <td>Sadece harf (a..z veya A..Z): </td>
+    <td><input type="text" id="alfa"></td>
+    <td id="error5" style="width:20%"></td>
+  </tr>
+  <tr>
+    <td>Sadece harf ve en fazla 30 uzunlukta olan string: </td>
+    <td><input type="text" id="max30"></td>
+    <td id="error6" style="width:20%"></td>
+  </tr>
+  <tr>
+    <td>3 kelimeden oluşan string: </td>
+    <td><input type="text" id="uckelime"></td>
+    <td id="error7" style="width:20%"></td>
+  </tr>
+  <tr>
+    <td>En az 1 büyük harf, en az 1 küçük harf, en az bir rakam ve en az 1 noktalama işareti içeren ve en az 8 uzunluğunda olan metin: </td>
+    <td><input type="text" id="password"></td>
+    <td id="error8" style="width:20%"></td>
+  </tr>
+
+
+</table>
+<br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
